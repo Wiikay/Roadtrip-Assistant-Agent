@@ -17,7 +17,19 @@
 
 ## 🚀 Quick Start
 
-### 1. Get API Keys (Free!)
+### Option 1: GitHub Codespaces (Recommended for Testing)
+1. **Open in Codespace**: Click the green "Code" button → "Codespaces" → "Create codespace"
+2. **Run setup script**: `chmod +x setup_codespace.sh && ./setup_codespace.sh`
+3. **Set API keys**: 
+   ```bash
+   export GOOGLE_MAPS_API_KEY="your_key_here"
+   export WEATHER_API_KEY="your_key_here"
+   ```
+4. **Test the assistant**: `python test_codespace.py`
+
+### Option 2: Local Development
+
+#### 1. Get API Keys (Free!)
 
 **Google Maps API:**
 - Go to [Google Cloud Console](https://console.cloud.google.com/)
@@ -28,7 +40,7 @@
 - Sign up at [WeatherAPI.com](https://www.weatherapi.com/)
 - Copy your API key from the dashboard
 
-### 2. Set Environment Variables
+#### 2. Set Environment Variables
 
 ```bash
 # macOS/Linux
@@ -40,17 +52,55 @@ $env:GOOGLE_MAPS_API_KEY="your_google_maps_key_here"
 $env:WEATHER_API_KEY="your_weather_api_key_here"
 ```
 
-### 3. Install Dependencies
+#### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
+npm install -g @modelcontextprotocol/server-google-maps
 ```
 
-### 4. Run Your Assistant
+#### 4. Run Your Assistant
 
 ```bash
 cd adk_agent_samples/mcp_agent
 adk web
+```
+
+## 🧪 Testing in Codespace
+
+Your repository includes comprehensive testing tools:
+
+### Automated Test Script
+```bash
+python test_codespace.py
+```
+
+This will test:
+- ✅ Weather API integration
+- ✅ Route weather functionality  
+- ✅ Agent import (if ADK available)
+- ✅ Conversation simulation
+
+### Expected Output
+```
+🚀 ROAD TRIP ASSISTANT - CODESPACE TESTING
+========================================
+
+🔧 ENVIRONMENT CHECK
+✅ Weather API Key: Set
+✅ Google Maps API Key: Set
+
+🌤️ TESTING WEATHER TOOL
+✅ Current weather retrieved successfully!
+   Location: San Francisco, California
+   Temperature: 65°F
+   Condition: Partly cloudy
+
+🎭 SIMULATING CONVERSATION
+🤖 Bot: Hi! I'm your road trip assistant. Let's plan an amazing journey! 🚗
+👤 User: San Francisco
+🤖 Bot: Great choice! Current weather in San Francisco:
+       🌤️ 65°F and partly cloudy
 ```
 
 ## 💬 Example Conversation
@@ -95,15 +145,19 @@ adk web
 
 ```
 Roadtrip-Assistant-Agent/
-├── adk_agent_samples/
-│   └── mcp_agent/
-│       ├── __init__.py
-│       ├── agent.py           # Main agent configuration
-│       ├── weather_tool.py    # Custom weather integration
-│       └── prompt.py          # Conversational AI prompt
-├── requirements.txt           # Python dependencies
-├── README.md                 # This file
-└── SETUP.md                  # Detailed setup instructions
+├── 📘 README.md                     # This file
+├── 📦 requirements.txt              # Python dependencies  
+├── 📖 SETUP.md                      # Detailed setup guide
+├── 🧪 test_codespace.py             # Comprehensive test script
+├── 🔧 setup_codespace.sh            # Quick setup for codespace
+├── 🔧 .env.example                  # Environment variables template
+├── 🔒 .gitignore                    # Protect sensitive files
+└── 📂 adk_agent_samples/
+    └── 📂 mcp_agent/
+        ├── 📄 __init__.py           # Package initialization
+        ├── 🤖 agent.py              # Main agent with Maps + Weather
+        ├── 🌤️ weather_tool.py       # Custom WeatherAPI integration
+        └── 💬 prompt.py             # Conversational AI prompt
 ```
 
 ## 🛠️ Architecture
@@ -173,12 +227,17 @@ weather_tool.get_weather_along_route(["SF", "Monterey", "LA"], days=2)
 - Verify Google Cloud APIs are enabled
 - Check API key permissions
 
+**Testing in Codespace**
+- Use the provided `test_codespace.py` script
+- Run `./setup_codespace.sh` for automatic setup
+- Check that ports are properly forwarded for web interface
+
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly
+4. Test thoroughly using `python test_codespace.py`
 5. Submit a pull request
 
 ## 📄 License
