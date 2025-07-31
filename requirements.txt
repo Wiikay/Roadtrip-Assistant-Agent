@@ -1,0 +1,6 @@
+# Core dependencies for Road Trip Assistant Agent
+google-adk-agents>=1.0.0
+requests>=2.31.0
+
+# Optional: For additional features
+python-dotenv>=1.0.0  # For .env file support
